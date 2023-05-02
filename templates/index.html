@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RESULTADOS DE LA PREDICCION</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  </head>
+  <body>
+    <div class="container p-5 my-5 bg-dark text-white">
+      <h1>Prediccion de Bitcoint a Etherium</h1>
+      <p>Este programa permite ver la prediccion del Bitcoint a Etherium usando redes neuronales y una API para sacar la informacion de Yahoo Finances</p>
+    </div>
+
+    {% if error %}
+    <div class="alert alert-danger" role="alert"> {{ error }} </div>
+    {% else %}
+    <div class="row align-items-center justify-content-center">
+      <div class="col-sm-6">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Fecha</th>
+              <th>Bitcoin</th>
+              <th>Ethereum</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{ fecha_fin }}</td>
+              <td>
+                <ul>
+                    <li>{{ datos_bit }}</li>
+                </ul>
+              </td>
+              
+              <td>
+                <ul>
+                    <li>{{ datos_eth }}</li>
+                </ul>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-sm-6">
+        <h2>Grafico de precision de prediccion de redes neuronales</h2>
+        <img src="data:image/png;base64,{{ buffer_img }}" alt="Grafico de perdida de la red neuronal" />
+        <p>La predicción para el valor de BTC-ETH mañana es: {{ prediccion }}</p>
+      </div>
+    </div>
+    {% endif %}
+
+  </body>
+</html>
